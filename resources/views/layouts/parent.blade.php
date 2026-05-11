@@ -27,6 +27,17 @@
         <a href="{{ route('activites.index') }}">🏃 Activités</a>
         <a href="{{ route('seances.index') }}">📅 Séances</a>
         <a href="{{ route('contact') }}">📩 Contact</a>
+
+@auth
+    <span style="color: white; margin-left: 20px;">👤 {{ Auth::user()->name }}</span>
+    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+        @csrf
+        <button type="submit" style="background-color: #ff4444; margin-left: 10px;">🚪 Déconnexion</button>
+    </form>
+@else
+    <a href="{{ route('login') }}">🔐 Connexion</a>
+    <a href="{{ route('register') }}" style="margin-left: 10px;">📝 Inscription</a>
+@endauth
         <a href="{{ route('agent') }}">🤖 Assistant IA</a>
     </nav>
     <main>
